@@ -1,0 +1,511 @@
+CREATE DATABASE Gr8Food_Group2;
+GO
+
+Use Gr8Food_Group2;
+GO
+
+/****** 对象:  Table [dbo].[Admin]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Admin](
+        [AdminID] [int] IDENTITY(1,1) NOT NULL,
+        [UserID] [int] NOT NULL,
+        [Name] [nvarchar](100) NULL,
+        [Password] [nvarchar](100) NULL,
+        [Email] [nvarchar](100) NULL,
+        [Phone] [nvarchar](100) NULL,
+        [Birthday] [date] NULL,
+        [Address] [nvarchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [AdminID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[Balance]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Balance](
+        [BalanceID] [int] NOT NULL,
+        [CustomerID] [int] NULL,
+        [Type] [nvarchar](100) NULL,
+        [Amount] [int] NULL,
+        [date] [date] NULL,
+        [RelatedOrderID] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [BalanceID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[Chef]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Chef](
+        [ChefID] [int] IDENTITY(1,1) NOT NULL,
+        [Name] [nvarchar](100) NULL,
+        [Password] [nvarchar](100) NULL,
+        [Email] [nvarchar](100) NULL,
+        [Phone] [nvarchar](100) NULL,
+        [Birthday] [date] NULL,
+        [Address] [nvarchar](100) NULL,
+        [UserID] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [ChefID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[Customer]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Customer](
+        [CustomerID] [int] IDENTITY(1,1) NOT NULL,
+        [UserID] [int] NOT NULL,
+        [Name] [nvarchar](100) NULL,
+        [Email] [nvarchar](100) NULL,
+        [Phone] [nvarchar](20) NULL,
+        [Birthday] [date] NULL,
+        [Address] [nvarchar](200) NULL,
+        [Password] [nvarchar](50) NOT NULL,
+        [EWallet] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [CustomerID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[EWalletReports]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[EWalletReports](
+        [ReportsID] [int] IDENTITY(1,1) NOT NULL,
+        [ManagerID] [int] NULL,
+        [CustomerID] [int] NULL,
+        [ReportDate] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [ReportsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[Feedback]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Feedback](
+        [FeedbackID] [int] NOT NULL,
+        [Text] [nvarchar](100) NULL,
+        [ManagerID] [int] NULL,
+        [Response] [nvarchar](100) NULL,
+        [ResponseDate] [date] NULL,
+        [OrderID] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [FeedbackID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[Manager]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Manager](
+        [ManagerID] [int] IDENTITY(1,1) NOT NULL,
+        [UserID] [int] NOT NULL,
+        [Name] [nvarchar](100) NULL,
+        [Email] [nvarchar](100) NULL,
+        [Phone] [nvarchar](20) NULL,
+        [Birthday] [date] NULL,
+        [Address] [nvarchar](200) NULL,
+        [Password] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [ManagerID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[Menu]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Menu](
+        [MenuID] [int] NOT NULL,
+        [ItemName] [nvarchar](100) NULL,
+        [Price] [int] NULL,
+        [Category] [nvarchar](100) NULL,
+        [Status] [nvarchar](100) NULL,
+        [ChefID] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [MenuID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[Order]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Order](
+        [OrderID] [int] NOT NULL,
+        [CustomerID] [int] NOT NULL,
+        [OrderDate] [date] NULL,
+        [OrderStatus] [nvarchar](100) NULL,
+        [OrderRemarks] [nvarchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [OrderID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[OrderDetails]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrderDetails](
+        [OrderDetailID] [int] NOT NULL,
+        [OrderID] [int] NULL,
+        [MenuID] [int] NULL,
+        [Quantity] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [OrderDetailID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[SalesDetails]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SalesDetails](
+        [SalesDetailsID] [int] IDENTITY(1,1) NOT NULL,
+        [SalesReportID] [int] NULL,
+        [OrderDetailsID] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [SalesDetailsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[SalesReports]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SalesReports](
+        [SalesReportsID] [int] NOT NULL,
+        [AdminID] [int] NULL,
+        [Date] [date] NULL,
+        [Type] [nvarchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [SalesReportsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** 对象:  Table [dbo].[Users]    脚本日期: 2026/4/22 21:35:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+        [UserID] [int] IDENTITY(1,1) NOT NULL,
+        [Role] [nvarchar](20) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+        [UserID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Admin] ON 
+GO
+INSERT [dbo].[Admin] ([AdminID], [UserID], [Name], [Password], [Email], [Phone], [Birthday], [Address]) VALUES (1, 1, N'Claire', N'CA654321', N'Claire@mail.com', N'11122223333', CAST(N'1999-03-03' AS Date), N'APU')
+GO
+INSERT [dbo].[Admin] ([AdminID], [UserID], [Name], [Password], [Email], [Phone], [Birthday], [Address]) VALUES (2, 1, N'Sophia', N'SA654321', N'Sophia@mail.com', N'11211121112', CAST(N'2003-04-21' AS Date), NULL)
+GO
+INSERT [dbo].[Admin] ([AdminID], [UserID], [Name], [Password], [Email], [Phone], [Birthday], [Address]) VALUES (3, 1, N'Darren', N'KA654321', N'Da@mail.com', N'11311131113', NULL, NULL)
+GO
+INSERT [dbo].[Admin] ([AdminID], [UserID], [Name], [Password], [Email], [Phone], [Birthday], [Address]) VALUES (5, 1, N'Test', N'111', N'Test@mail.com', N'000', NULL, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[Admin] OFF
+GO
+INSERT [dbo].[Balance] ([BalanceID], [CustomerID], [Type], [Amount], [date], [RelatedOrderID]) VALUES (1, 1, N'Top Up', 200, CAST(N'2026-03-01' AS Date), NULL)
+GO
+INSERT [dbo].[Balance] ([BalanceID], [CustomerID], [Type], [Amount], [date], [RelatedOrderID]) VALUES (2, 1, N'Dedection', 34, CAST(N'2026-03-01' AS Date), NULL)
+GO
+INSERT [dbo].[Balance] ([BalanceID], [CustomerID], [Type], [Amount], [date], [RelatedOrderID]) VALUES (3, 1, N'Dedection', 11, CAST(N'2026-03-02' AS Date), NULL)
+GO
+INSERT [dbo].[Balance] ([BalanceID], [CustomerID], [Type], [Amount], [date], [RelatedOrderID]) VALUES (4, 2, N'Top Up', 50, CAST(N'2026-03-22' AS Date), NULL)
+GO
+INSERT [dbo].[Balance] ([BalanceID], [CustomerID], [Type], [Amount], [date], [RelatedOrderID]) VALUES (5, 2, N'Dedection', 25, CAST(N'2026-04-01' AS Date), NULL)
+GO
+INSERT [dbo].[Balance] ([BalanceID], [CustomerID], [Type], [Amount], [date], [RelatedOrderID]) VALUES (6, 2, N'Cancel', 25, CAST(N'2026-04-01' AS Date), 3)
+GO
+INSERT [dbo].[Balance] ([BalanceID], [CustomerID], [Type], [Amount], [date], [RelatedOrderID]) VALUES (7, 3, N'Top Up', 130, CAST(N'2026-03-31' AS Date), NULL)
+GO
+INSERT [dbo].[Balance] ([BalanceID], [CustomerID], [Type], [Amount], [date], [RelatedOrderID]) VALUES (8, 3, N'Dedection', 53, CAST(N'2026-04-02' AS Date), NULL)
+GO
+SET IDENTITY_INSERT [dbo].[Chef] ON 
+GO
+INSERT [dbo].[Chef] ([ChefID], [Name], [Password], [Email], [Phone], [Birthday], [Address], [UserID]) VALUES (1, N'Jane', N'JC4321', N'Jane@mail.com', N'31131113111', NULL, NULL, 4)
+GO
+INSERT [dbo].[Chef] ([ChefID], [Name], [Password], [Email], [Phone], [Birthday], [Address], [UserID]) VALUES (2, N'Camilia', N'CC4321', N'Camilia@mail.com', N'31231123112', NULL, N'parkhill', 4)
+GO
+INSERT [dbo].[Chef] ([ChefID], [Name], [Password], [Email], [Phone], [Birthday], [Address], [UserID]) VALUES (3, N'Omar', N'AC4321', N'Omar@mail.com', N'31331133113', NULL, NULL, 4)
+GO
+SET IDENTITY_INSERT [dbo].[Chef] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Customer] ON 
+GO
+INSERT [dbo].[Customer] ([CustomerID], [UserID], [Name], [Email], [Phone], [Birthday], [Address], [Password], [EWallet]) VALUES (1, 3, N'AC1234', N'Amy@mail.com', N'21121112111', NULL, NULL, N'Amy', 150)
+GO
+INSERT [dbo].[Customer] ([CustomerID], [UserID], [Name], [Email], [Phone], [Birthday], [Address], [Password], [EWallet]) VALUES (2, 3, N'LC1234', N'Louis@mail.com', N'21221122112', NULL, NULL, N'Louis', 50)
+GO
+INSERT [dbo].[Customer] ([CustomerID], [UserID], [Name], [Email], [Phone], [Birthday], [Address], [Password], [EWallet]) VALUES (3, 3, N'FC1234', N'Farah@mail.com', N'21321132113', NULL, NULL, N'Farah', 150)
+GO
+SET IDENTITY_INSERT [dbo].[Customer] OFF
+GO
+SET IDENTITY_INSERT [dbo].[EWalletReports] ON 
+GO
+INSERT [dbo].[EWalletReports] ([ReportsID], [ManagerID], [CustomerID], [ReportDate]) VALUES (1, 1, 1, CAST(N'2026-04-25' AS Date))
+GO
+INSERT [dbo].[EWalletReports] ([ReportsID], [ManagerID], [CustomerID], [ReportDate]) VALUES (2, 3, 2, CAST(N'2026-04-25' AS Date))
+GO
+INSERT [dbo].[EWalletReports] ([ReportsID], [ManagerID], [CustomerID], [ReportDate]) VALUES (3, 3, 2, CAST(N'2026-04-25' AS Date))
+GO
+INSERT [dbo].[EWalletReports] ([ReportsID], [ManagerID], [CustomerID], [ReportDate]) VALUES (4, 2, 1, CAST(N'2026-04-25' AS Date))
+GO
+SET IDENTITY_INSERT [dbo].[EWalletReports] OFF
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Text], [ManagerID], [Response], [ResponseDate], [OrderID]) VALUES (1, N'good', 1, N'thanks', CAST(N'2026-03-01' AS Date), 1)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Text], [ManagerID], [Response], [ResponseDate], [OrderID]) VALUES (2, N'good', 2, N'thanks', CAST(N'2026-03-01' AS Date), 2)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Text], [ManagerID], [Response], [ResponseDate], [OrderID]) VALUES (3, N'slow', 3, N'We will improve', CAST(N'2026-04-01' AS Date), 3)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Text], [ManagerID], [Response], [ResponseDate], [OrderID]) VALUES (4, N'Recommand to friends', 3, N'thanks', CAST(N'2026-04-02' AS Date), 5)
+GO
+SET IDENTITY_INSERT [dbo].[Manager] ON 
+GO
+INSERT [dbo].[Manager] ([ManagerID], [UserID], [Name], [Email], [Phone], [Birthday], [Address], [Password]) VALUES (1, 2, N'Jennifer', N'Jennifer@mail.com', N'41141114111', CAST(N'2007-05-04' AS Date), NULL, N'JM123456')
+GO
+INSERT [dbo].[Manager] ([ManagerID], [UserID], [Name], [Email], [Phone], [Birthday], [Address], [Password]) VALUES (2, 2, N'Caroline', N'Caroline@mail.com', N'41241124112', NULL, NULL, N'LM123456')
+GO
+INSERT [dbo].[Manager] ([ManagerID], [UserID], [Name], [Email], [Phone], [Birthday], [Address], [Password]) VALUES (3, 2, N'Eric', N'Eric@mail.com', N'41341134113', NULL, NULL, N'EM123456')
+GO
+SET IDENTITY_INSERT [dbo].[Manager] OFF
+GO
+INSERT [dbo].[Menu] ([MenuID], [ItemName], [Price], [Category], [Status], [ChefID]) VALUES (1, N'Fried chicken', 5, N'Signboard', N'Available', 1)
+GO
+INSERT [dbo].[Menu] ([MenuID], [ItemName], [Price], [Category], [Status], [ChefID]) VALUES (2, N'Rice', 4, N'Signboard', N'Not available', 1)
+GO
+INSERT [dbo].[Menu] ([MenuID], [ItemName], [Price], [Category], [Status], [ChefID]) VALUES (3, N'Orange juice', 3, N'Drink', N'Not available', 2)
+GO
+INSERT [dbo].[Menu] ([MenuID], [ItemName], [Price], [Category], [Status], [ChefID]) VALUES (4, N'Nasi gorang ayam', 8, N'Signboard', N'Available', 1)
+GO
+INSERT [dbo].[Menu] ([MenuID], [ItemName], [Price], [Category], [Status], [ChefID]) VALUES (5, N'Noddles', 15, N'Signboard', N'Available', 1)
+GO
+INSERT [dbo].[Menu] ([MenuID], [ItemName], [Price], [Category], [Status], [ChefID]) VALUES (6, N'Fruits', 10, N'Fruits', N'Available', 2)
+GO
+INSERT [dbo].[Menu] ([MenuID], [ItemName], [Price], [Category], [Status], [ChefID]) VALUES (7, N'Indo Mee', 11, N'Signboard', N'Available', 2)
+GO
+INSERT [dbo].[Menu] ([MenuID], [ItemName], [Price], [Category], [Status], [ChefID]) VALUES (8, N'beef', 33, N'Signboard', N'Available', 3)
+GO
+INSERT [dbo].[Order] ([OrderID], [CustomerID], [OrderDate], [OrderStatus], [OrderRemarks]) VALUES (1, 1, CAST(N'2026-03-01' AS Date), N'Complete', N'No vegetables')
+GO
+INSERT [dbo].[Order] ([OrderID], [CustomerID], [OrderDate], [OrderStatus], [OrderRemarks]) VALUES (2, 1, CAST(N'2026-03-02' AS Date), N'Complete', N'No vegetables')
+GO
+INSERT [dbo].[Order] ([OrderID], [CustomerID], [OrderDate], [OrderStatus], [OrderRemarks]) VALUES (3, 2, CAST(N'2026-04-01' AS Date), N'In progress', N'No seafood')
+GO
+INSERT [dbo].[Order] ([OrderID], [CustomerID], [OrderDate], [OrderStatus], [OrderRemarks]) VALUES (4, 2, CAST(N'2026-04-01' AS Date), N'Cancel', N'No seafood')
+GO
+INSERT [dbo].[Order] ([OrderID], [CustomerID], [OrderDate], [OrderStatus], [OrderRemarks]) VALUES (5, 3, CAST(N'2026-04-02' AS Date), N'In progress', NULL)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [MenuID], [Quantity]) VALUES (1, 1, 1, 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [MenuID], [Quantity]) VALUES (2, 1, 2, 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [MenuID], [Quantity]) VALUES (3, 1, 5, 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [MenuID], [Quantity]) VALUES (4, 1, 6, 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [MenuID], [Quantity]) VALUES (5, 2, 3, 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [MenuID], [Quantity]) VALUES (6, 2, 4, 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [MenuID], [Quantity]) VALUES (7, 3, 5, 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [MenuID], [Quantity]) VALUES (8, 3, 6, 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [MenuID], [Quantity]) VALUES (9, 3, 5, 1)
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [MenuID], [Quantity]) VALUES (10, 3, 6, 1)
+GO
+SET IDENTITY_INSERT [dbo].[SalesDetails] ON 
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (1, 1, 1)
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (2, 1, 2)
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (3, 1, 3)
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (4, 1, 4)
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (5, 1, 5)
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (6, 1, 6)
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (7, 2, 5)
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (8, 3, 4)
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (9, 3, 5)
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (10, 3, 8)
+GO
+INSERT [dbo].[SalesDetails] ([SalesDetailsID], [SalesReportID], [OrderDetailsID]) VALUES (11, 3, 10)
+GO
+SET IDENTITY_INSERT [dbo].[SalesDetails] OFF
+GO
+INSERT [dbo].[SalesReports] ([SalesReportsID], [AdminID], [Date], [Type]) VALUES (1, 3, CAST(N'2026-04-30' AS Date), N'Month')
+GO
+INSERT [dbo].[SalesReports] ([SalesReportsID], [AdminID], [Date], [Type]) VALUES (2, 1, CAST(N'2026-04-30' AS Date), N'Category')
+GO
+INSERT [dbo].[SalesReports] ([SalesReportsID], [AdminID], [Date], [Type]) VALUES (3, 2, CAST(N'2026-04-30' AS Date), N'Chef')
+GO
+SET IDENTITY_INSERT [dbo].[Users] ON 
+GO
+INSERT [dbo].[Users] ([UserID], [Role]) VALUES (1, N'Admin')
+GO
+INSERT [dbo].[Users] ([UserID], [Role]) VALUES (2, N'Manager')
+GO
+INSERT [dbo].[Users] ([UserID], [Role]) VALUES (3, N'Customer')
+GO
+INSERT [dbo].[Users] ([UserID], [Role]) VALUES (4, N'Chef')
+GO
+SET IDENTITY_INSERT [dbo].[Users] OFF
+GO
+ALTER TABLE [dbo].[Customer] ADD  DEFAULT ('Temp123') FOR [Password]
+GO
+ALTER TABLE [dbo].[Customer] ADD  DEFAULT ((0)) FOR [EWallet]
+GO
+ALTER TABLE [dbo].[Manager] ADD  DEFAULT ('Temp123') FOR [Password]
+GO
+ALTER TABLE [dbo].[Admin]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[Balance]  WITH CHECK ADD FOREIGN KEY([CustomerID])
+REFERENCES [dbo].[Customer] ([CustomerID])
+GO
+ALTER TABLE [dbo].[Chef]  WITH CHECK ADD  CONSTRAINT [FK_Chef_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[Chef] CHECK CONSTRAINT [FK_Chef_User]
+GO
+ALTER TABLE [dbo].[Customer]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[EWalletReports]  WITH CHECK ADD FOREIGN KEY([CustomerID])
+REFERENCES [dbo].[Customer] ([CustomerID])
+GO
+ALTER TABLE [dbo].[EWalletReports]  WITH CHECK ADD FOREIGN KEY([ManagerID])
+REFERENCES [dbo].[Manager] ([ManagerID])
+GO
+ALTER TABLE [dbo].[Feedback]  WITH CHECK ADD FOREIGN KEY([ManagerID])
+REFERENCES [dbo].[Manager] ([ManagerID])
+GO
+ALTER TABLE [dbo].[Feedback]  WITH CHECK ADD  CONSTRAINT [FK_Feedback_OrderID] FOREIGN KEY([OrderID])
+REFERENCES [dbo].[Order] ([OrderID])
+GO
+ALTER TABLE [dbo].[Feedback] CHECK CONSTRAINT [FK_Feedback_OrderID]
+GO
+ALTER TABLE [dbo].[Manager]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[Menu]  WITH CHECK ADD  CONSTRAINT [FK_Menu_Chef] FOREIGN KEY([ChefID])
+REFERENCES [dbo].[Chef] ([ChefID])
+GO
+ALTER TABLE [dbo].[Menu] CHECK CONSTRAINT [FK_Menu_Chef]
+GO
+ALTER TABLE [dbo].[Order]  WITH CHECK ADD FOREIGN KEY([CustomerID])
+REFERENCES [dbo].[Order] ([OrderID])
+GO
+ALTER TABLE [dbo].[OrderDetails]  WITH CHECK ADD FOREIGN KEY([MenuID])
+REFERENCES [dbo].[Menu] ([MenuID])
+GO
+ALTER TABLE [dbo].[OrderDetails]  WITH CHECK ADD FOREIGN KEY([OrderID])
+REFERENCES [dbo].[Order] ([OrderID])
+GO
+ALTER TABLE [dbo].[SalesDetails]  WITH CHECK ADD FOREIGN KEY([OrderDetailsID])
+REFERENCES [dbo].[OrderDetails] ([OrderDetailID])
+GO
+ALTER TABLE [dbo].[SalesDetails]  WITH CHECK ADD FOREIGN KEY([SalesReportID])
+REFERENCES [dbo].[SalesReports] ([SalesReportsID])
+GO
+ALTER TABLE [dbo].[Balance]  WITH CHECK ADD CHECK  (([Type]='Cancel' OR [Type]='Dedection' OR [Type]='Top Up'))
+GO
+ALTER TABLE [dbo].[Menu]  WITH CHECK ADD CHECK  (([category]='Fruits' OR [category]='Drink' OR [category]='Signboard'))
+GO
+ALTER TABLE [dbo].[Menu]  WITH CHECK ADD CHECK  (([Status]='Not available' OR [Status]='Available'))
+GO
+ALTER TABLE [dbo].[Order]  WITH CHECK ADD CHECK  (([OrderStatus]='Cancel' OR [OrderStatus]='In progress' OR [OrderStatus]='Complete'))
+GO
+ALTER TABLE [dbo].[SalesReports]  WITH CHECK ADD CHECK  (([Type]='Chef' OR [Type]='Category' OR [Type]='Year' OR [Type]='Month'))
+GO
+ALTER TABLE [dbo].[Users]  WITH CHECK ADD CHECK  (([role]='Customer' OR [role]='Chef' OR [role]='Manager' OR [role]='Admin'))
+GO
+
+-- Users
+SELECT * FROM Users;
+
+-- Customer
+SELECT * FROM Customer;
+
+-- Order
+SELECT * FROM [Order];
+
+-- OrderDetails
+SELECT * FROM OrderDetails;
+
+-- Balance
+SELECT * FROM Balance;
+
+-- Admin
+SELECT * FROM Admin;
+
+-- SalesReports
+SELECT * FROM SalesReports;
+
+-- SalesDetails
+SELECT * FROM SalesDetails;
+
+-- Manager
+SELECT * FROM Manager;
+
+-- Feedback
+SELECT * FROM Feedback;
+
+-- EWalletReports
+SELECT * FROM EWalletReports;
+
+-- Chef
+SELECT * FROM Chef;
+
+-- Menu
+SELECT * FROM Menu;
