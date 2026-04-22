@@ -1,0 +1,21 @@
+supplier_id,supplier_name,contact,email,address,outstanding_balance
+S001,Fresh Fruits Inc.,1234567890,freshfruits@example.com,123 Fruit St,389.00
+S002,Dairy Products Ltd.,0987654321,dairy@example.com,456 Dairy Ave,750.00
+S003,Bakery Supplies Co.,1122334455,bakery@example.com,789 Bake Rd,250.00
+S004,Grain Masters Inc.,2233445566,grain@example.com,321 Grain Blvd,500.00
+S005,Meat Suppliers Ltd.,3344556677,meat@example.com,654 Meat Ln,1500.00
+S006,Vegetable Growers Co.,4455667788,veggies@example.com,987 Veggie Way,800.00
+S007,Hygiene Products Inc.,5566778899,hygiene@example.com,321 Clean St,600.00
+S008,Beverage Distributors,6677889900,beverages@example.com,456 Drink Ave,1200.00
+S009,Snack Foods Co.,7788990011,snacks@example.com,789 Munch Rd,900.00
+S010,Canned Goods Inc.,8899001122,canned@example.com,321 Can St,1100.00
+S011,Frozen Foods Ltd.,9900112233,frozen@example.com,654 Freeze Ln,1300.00
+S012,Paper Products Co.,0011223344,paper@example.com,987 Sheet Way,700.00
+S013,Cleaning Supplies Inc.,1122334455,clean@example.com,123 Scrub St,350.00
+S014,Pet Supplies Co.,2233445566,pets@example.com,456 Bark Ave,950.00
+S015,Baby Products Inc.,3344556677,baby@example.com,789 Crib Rd,1050.00
+S016,Health & Beauty Co.,4455667788,beauty@example.com,321 Glam Way,80.00
+S017,Office Supplies Ltd.,5566778899,office@example.com,654 Desk Ln,1250.00
+S018,Garden Supplies Co.,6677889900,garden@example.com,987 Bloom Ave,1350.00
+S019,Automotive Parts Inc.,7788990011,auto@example.com,321 Gear St,1450.00
+S020,Electronics Suppliers,8899001122,electronics@example.com,654 Wire Ln,1550.00
