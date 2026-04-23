@@ -1,0 +1,21 @@
+customer_id,customer_name,contact,email,outstanding_balance
+C001,James Wilson,13512345678,james.wilson@example.com,0.00
+C002,Sarah Johnson,13623456789,sarah.johnson@example.com,25.00
+C003,Michael Brown,13734567890,michael.brown@example.com,0.00
+C004,Emily Davis,13845678901,emily.davis@example.com,100.00
+C005,David Miller,13956789012,david.miller@example.com,0.00
+C006,Jennifer Taylor,15067890123,jennifer.taylor@example.com,0.00
+C007,Christopher Anderson,15178901234,christopher.anderson@example.com,50.00
+C008,Jessica Thomas,15289012345,jessica.thomas@example.com,0.00
+C009,Matthew Jackson,15390123456,matthew.jackson@example.com,0.00
+C010,Amanda White,15401234567,amanda.white@example.com,125.00
+C011,Daniel Harris,15512345678,daniel.harris@example.com,0.00
+C012,Elizabeth Martin,15623456789,elizabeth.martin@example.com,0.00
+C013,Robert Garcia,15734567890,robert.garcia@example.com,375.00
+C014,Michelle Martinez,15845678901,michelle.martinez@example.com,0.00
+C015,William Robinson,15956789012,william.robinson@example.com,0.00
+C016,Lauren Clark,16067890123,lauren.clark@example.com,525.00
+C017,Joseph Rodriguez,16178901234,joseph.rodriguez@example.com,0.00
+C018,Ashley Lewis,16289012345,ashley.lewis@example.com,0.00
+C019,Thomas Lee,16390123456,thomas.lee@example.com,675.00
+C020,Nicole Walker,16401234567,nicole.walker@example.com,0.00
